@@ -125,7 +125,7 @@ canvas {
           transform: translateY(-50%);
   width: 60px;
   height: 60px;
-  background: url(/img/fireworks-logo2.png) center center/cover;
+  background: url(/fireworks/img/fireworks-logo2.png) center center/cover;
 }
 
 .drawer-icon {
