@@ -125,7 +125,7 @@ canvas {
           transform: translateY(-50%);
   width: 60px;
   height: 60px;
-  background: url(/fireworks/img/fireworks-logo2.png) center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/fireworks-logo2.png?raw=true) center center/cover;
 }
 
 .drawer-icon {
@@ -260,7 +260,7 @@ canvas {
 }
 
 .main-visual__content {
-  background: url(/img/fireworks1.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/fireworks1.jpg?raw=true) no-repeat center center/cover;
   height: 600px;
   overflow: hidden;
 }
@@ -538,19 +538,19 @@ canvas {
 }
 
 .instagram__photo__1 {
-  background: url(/img/fireworks2.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/fireworks2.jpg?raw=true) no-repeat center center/cover;
 }
 
 .instagram__photo__2 {
-  background: url(/img/fireworks3.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/fireworks3.jpg?raw=true) no-repeat center center/cover;
 }
 
 .instagram__photo__3 {
-  background: url(/img/fireworks4.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/fireworks4.jpg?raw=true) no-repeat center center/cover;
 }
 
 .instagram__photo__4 {
-  background: url(/img/fireworks5.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/fireworks5.jpg?raw=true) no-repeat center center/cover;
 }
 
 .tiktok {
@@ -608,19 +608,19 @@ canvas {
 }
 
 .tiktok__photo__1 {
-  background: url(/img/fireworks6.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/fireworks6.jpg?raw=true) no-repeat center center/cover;
 }
 
 .tiktok__photo__2 {
-  background: url(/img/fireworks7.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/fireworks7.jpg?raw=true) no-repeat center center/cover;
 }
 
 .tiktok__photo__3 {
-  background: url(/img/fireworks8.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/fireworks8.jpg?raw=true) no-repeat center center/cover;
 }
 
 .tiktok__photo__4 {
-  background: url(/img/fireworks9.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/fireworks9.jpg?raw=true) no-repeat center center/cover;
 }
 
 .sns__contents {
@@ -685,7 +685,7 @@ canvas {
   width: 300px;
   height: 300px;
   margin: 40px auto;
-  background: url(/img/fireworks10.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/fireworks10.jpg?raw=true) no-repeat center center/cover;
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -727,7 +727,7 @@ canvas {
           transform: translateY(-50%);
   width: 24px;
   height: 24px;
-  background: url(/img/facebook.png) no-repeat center center/contain;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/facebook.png?raw=true) no-repeat center center/contain;
 }
 
 .facebook__content::before {
@@ -738,7 +738,7 @@ canvas {
   width: 300px;
   height: 300px;
   margin: 40px auto;
-  background: url(/img/fireworks11.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/fireworks11.jpg?raw=true) no-repeat center center/cover;
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -773,7 +773,7 @@ canvas {
 .course__photo {
   width: 100%;
   height: 400px;
-  background: url(/img/cruise.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/cruise.jpg?raw=true) no-repeat center center/cover;
 }
 
 .course__content {
@@ -974,7 +974,7 @@ canvas {
 }
 
 .logo__mask::before {
-  background: url(/img/face-mask.png) center center/contain;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/face-mask.png?raw=true) center center/contain;
   opacity: 0.6;
 }
 
@@ -2881,7 +2881,7 @@ canvas {
           transform: translateY(-50%);
   width: 60px;
   height: 60px;
-  background: url(/img/fireworks-logo2.png) center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/fireworks-logo2.png?raw=true) center center/cover;
 }
 
 @media (max-width: 767px) {
