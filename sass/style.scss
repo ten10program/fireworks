@@ -1,0 +1,2417 @@
+// @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Noto+Sans+JP:wght@300;700&family=Noto+Serif+JP:wght@300;700&display=swap');
+
+
+
+// $font-en: "Lato", sans-serif;
+// $font-ja: "Noto Sans JP", sans-serif;
+$font-en: "Lato", sans-serif;
+$font-ja: "Noto Sans JP", sans-serif;
+$font-ja2:"Noto Serif JP", sans-serif;
+
+
+$color-main: #e8b819;
+$color-main1: #ffeaa6;
+$color-accent: #e81973;
+$color-text: #eeeeee;
+$color-back: #223;
+
+$layout-width-inner: 1200px;
+
+$breakpoints: (
+  //キー : 値
+  "sp": "(max-width: 767px)",
+  "tab": "(min-width: 768px) and (max-width: #{$layout-width-inner - 1px})",
+  "pc": "(min-width: #{$layout-width-inner})"
+) !default;
+
+//メディアクエリ用のmixinを定義。デフォ値はmd
+@mixin mq($breakpoint: sp) {
+  //map-get(マップ型変数, キー)で値を取得
+  @media #{map-get($breakpoints, $breakpoint)} {
+    //この中をカスタムできる
+    @content;
+  }
+}
+
+// ====================================
+// common
+// ====================================
+body {
+  color: $color-text;
+  background: $color-back;
+  line-height: 1.4;
+  font-family: $font-ja;
+}
+
+.inner {
+  width: $layout-width-inner;
+  max-width: 100%;
+  height: inherit;
+  margin: 0 auto;
+}
+.section-title {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 240px;
+  margin-bottom: 160px;
+  font-weight: 700;
+
+    @include mq('sp'){
+        font-size: 24px;
+        margin-top: 80px;
+        margin-bottom: 40px;
+  }
+}
+.button {
+  a {
+    display: inline-block;
+    width: 200px;
+    max-width: 100%;
+    height: 80px;
+    line-height: 80px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    background: $color-main;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgba(#000, 0.16);
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+
+    @include mq("sp") {
+      width: 280px;
+      height: 60px;
+      line-height: 60px;
+      font-size: 16px;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.back {
+  z-index: -1000;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #111, #226);
+
+  position: fixed;
+}
+canvas{
+  position: fixed;
+}
+.fwb{
+  font-weight: 700;
+}
+
+// ====================================
+//   header
+// ====================================
+.header {
+  height: 80px;
+    @include mq('sp'){
+        height: 60px;
+  }
+}
+.header__inner {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.header__logo {
+  padding-left: 80px;
+
+  a {
+    color: $color-text;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+
+    @include mq('sp'){
+      font-size: 16px;
+}
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 8px;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 60px;
+      background: url(/img/fireworks-logo2.png) center center / cover;
+
+
+       }
+     }
+}
+
+// ========================================
+// drawer-icon
+// ========================================
+
+.drawer-icon{
+  position: fixed;
+  top: 20px;
+  right: 16px;
+  z-index: 300;
+  display: none;
+  transition: transform 0.5s ease 0s;
+
+    @include mq('sp'){
+        display:block;
+  }
+
+  &.is-active{
+    transform: translateX(-200px);
+    .drawer-icon__bar1{
+      transform: rotate(-45deg);
+      top: 8px;
+      }
+      .drawer-icon__bar2{
+display: none;      
+      }
+      .drawer-icon__bar3{
+        transform: rotate(45deg);
+top: 8px;
+      }
+      
+
+  }
+
+}
+.drawer-icon__bars{
+  width: 22px;
+  height: 20px;
+  display: block;
+  position: relative;
+
+}
+
+.drawer-icon__bar1,
+.drawer-icon__bar2,
+.drawer-icon__bar3{
+  position: absolute;
+  width: 22px;
+  height: 4px;
+  background: #fff;
+  top:0;
+  left: 0;
+
+}
+
+.drawer-icon__bar1{
+top: 0;
+}
+.drawer-icon__bar2{
+top: 8px;
+
+}
+.drawer-icon__bar3{
+top: 16px;
+}
+.drawer-content{
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: #fff;
+  box-shadow: 0 0 3px rgba(#000, 0.16);
+  z-index: 299;
+  transform:translateX(105%);
+  transition: transform 0.5s ease 0s;
+
+
+  &.is-active{
+    transform: translateX(0%);
+  }
+
+}
+.drawer-content__items{
+
+}
+.drawer-content__item{
+  border-bottom: 1px dotted #707070;
+
+  a{
+    display: block;
+    color: #707070;
+    text-decoration: none;
+    padding: 18px 20px;
+    position: relative;
+    &::after{
+      content: "";
+      position: absolute;
+      right: 21px;
+      top: 50%;
+      transform:translateY(-50%);
+      width: 8px;
+      height: 11px;
+      background: url(../img/arrow-b.png) no-repeat center center / contain;
+
+    }
+
+  }
+}
+.drawer-background{
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(#000, 0.8);
+  z-index: 298;
+  display: none;
+
+  &.is-active{
+    display: block;
+
+  }
+
+}
+
+// ======================================
+// main-visual
+// ======================================
+.main-visual {
+}
+.main-visual__content {
+  background: url(/img/fireworks1.jpg) no-repeat center center / cover;
+  height: 600px;
+  overflow:hidden;
+}
+.main-visual__inner {
+  position: relative;
+  // overflow: hidden;
+}
+.main-visual__title {
+  font-weight: 700;
+  font-size: 40px;
+  font-family: $font-ja2;
+  line-height: 2;
+  position: absolute;
+  top: 100px;
+  left: 200px;
+
+    @include mq('sp'){
+        font-size: 24px;
+        top: 80px;
+        left: 140px;
+  }
+}
+.main-visual__title__circle{
+
+  border-radius: 50%;
+  background:$color-back;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.8))
+
+}
+.main-visual__title__circle1{
+  width: 480px;
+  height: 480px;
+  position: absolute;
+  top: 160px;
+  left: -160px;
+    @include mq('sp'){
+      top: 240px;
+      left: -120px;
+        
+      width: 320px;
+      height: 320px;
+
+  }
+}
+.main-visual__title__circle2{
+  width: 320px;
+  height: 320px;
+  position: absolute;
+  top: -20px;
+  right: -40px;
+    @include mq('sp'){
+      top: -10px;
+      right: -30px;
+        width: 160px;
+        height: 160px;
+  }
+
+}
+.main-visual__date {
+  font-weight: 700;
+  font-size: 24px;
+
+  font-family: $font-ja2;
+  line-height: 2;
+  text-align: center;
+  position: absolute;
+  top: 50px;
+  right: 70px;  
+  span{
+    font-size: 64px;
+    font-weight: 700;
+  }
+
+    @include mq('sp'){
+      top: 24px;
+      right: 40px;
+        font-size: 12px;
+        bottom: 24px;
+
+        span{
+          font-size: 32px;
+        }
+  }
+
+}
+// =====================
+// subheader
+// ======================
+.subheader {
+  height: 80px;
+  border-top: 2px solid $color-text;
+  border-bottom: 2px solid $color-text;
+  background: rgba(#000, 0.7);
+
+  &.is-fixed {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    z-index: 100;
+ }
+   @include mq('sp'){
+     display: none;
+       
+ }
+
+
+}
+.subheader__inner {
+  height: inherit;
+}
+.subheader__nav {
+  margin-left: 8px;
+  margin-right: 8px;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+
+  li {
+  }
+  a {
+    color: $color-text;
+    text-decoration: none;
+
+    @include mq("tab") {
+      font-size: 12px;
+    }
+  }
+}
+
+// =================================
+// sns
+// ================================
+.sns {
+}
+.sns__inner {
+}
+.sns__head {
+
+}
+.sns__content {
+  width: 800px;
+  margin: 0 auto;
+  max-width: 90%;
+  text-align: center;
+  margin-top: 80px;
+}
+.sns__subtitle {
+  font-size: 24px;
+  color: $color-main;
+  font-weight: 700;
+    @include mq('sp'){
+        font-size: 16px;
+  }
+  
+}
+.sns__text, .twitter__text, .facebook__text{
+  a{
+    text-decoration: none;
+    // color: #1D9BF0;
+    color:$color-main;
+    // font-weight: 700;
+    &:hover{
+     text-decoration: underline;;
+    }
+  }
+}
+.sns__text {
+  margin-top: 80px;
+  text-align: left;
+    @include mq('sp'){
+        font-size: 12px;
+
+  }
+ 
+  span{
+    font-size: 32px;
+    font-weight: 700;
+
+      @include mq('sp'){
+          font-size: 24px;
+    }
+  }
+}
+
+.sns__wrapper {
+  margin-top: 80px;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+.sns__titles {
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+  padding: 16px;
+  border: 2px solid $color-text;
+    @include mq('sp'){
+        font-size: 16px;
+        padding: 8px;
+  }
+}
+
+.instagram {
+  width: 50%;
+
+  @include mq("sp") {
+    width: 100%;
+  }
+}
+.instagram__title {
+  a {
+    text-decoration: none;
+    color: $color-text;
+    position: relative;
+
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background: url(/img/instagram.png) no-repeat center center / contain;
+    }
+  }
+}
+.instagram__photos {
+  display: flex;
+  flex-wrap: wrap;
+}
+.instagram__photo {
+  width: 50%;
+  height: 300px;
+  border: 1px solid $color-text;
+  @include mq("tab") {
+    height: 25vw;
+  }
+  @include mq("sp") {
+    height: 50vw;
+  }
+}
+.instagram__photo__1 {
+  background: url(/img/fireworks2.jpg) no-repeat center center / cover;
+}
+.instagram__photo__2 {
+  background: url(/img/fireworks3.jpg) no-repeat center center / cover;
+}
+.instagram__photo__3 {
+  background: url(/img/fireworks4.jpg) no-repeat center center / cover;
+}
+.instagram__photo__4 {
+  background: url(/img/fireworks5.jpg) no-repeat center center / cover;
+}
+
+.tiktok {
+  width: 50%;
+
+  @include mq("sp") {
+    width: 100%;
+  }
+}
+.tiktok__title {
+  a {
+    text-decoration: none;
+    color: $color-text;
+
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background: url(/img/tik-tok.png) no-repeat center center / contain;
+    }
+  }
+}
+
+.tiktok__photos {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tiktok__photo {
+  width: 50%;
+  height: 300px;
+  border: 1px solid $color-text;
+  @include mq("tab") {
+    height: 25vw;
+  }
+  @include mq("sp") {
+    height: 50vw;
+  }
+}
+.tiktok__photo__1 {
+  background: url(/img/fireworks6.jpg) no-repeat center center / cover;
+}
+.tiktok__photo__2 {
+  background: url(/img/fireworks7.jpg) no-repeat center center / cover;
+}
+.tiktok__photo__3 {
+  background: url(/img/fireworks8.jpg) no-repeat center center / cover;
+}
+.tiktok__photo__4 {
+  background: url(/img/fireworks9.jpg) no-repeat center center / cover;
+}
+.sns__contents {
+  padding: 24px;
+  padding-left: 100px;
+  border: 1px solid $color-text;
+   @include mq('sp'){
+       font-size: 8px;
+       padding: 16px;
+       padding-left: 80px;
+ }
+
+  position: relative;
+  &::before {
+    position: absolute;
+    content: "";
+    width: 40px;
+    height: 40px;
+    top: 24px;
+    left: 24px;
+    border-radius: 50%;
+    background: #fff;
+  }
+}
+.twitter {
+  width: 50%;
+
+  @include mq("sp") {
+    width: 100%;
+  }
+}
+
+.twitter__title {
+  a {
+    text-decoration: none;
+    color: $color-text;
+
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background: url(/img/twitter.png) no-repeat center center / contain;
+    }
+  }
+}
+.twitter__content {
+  &::before {
+    background: #666;
+  }
+}
+.twitter__photo {
+  width: 300px;
+  height: 300px;
+  margin: 40px auto;
+  background: url(/img/fireworks10.jpg) no-repeat center center / cover;
+
+  @include mq("tab") {
+    height: 25vw;
+    width: 25vw;
+  }
+  @include mq("sp") {
+    height: 50vw;
+    width: 50vw;
+  }
+}
+.facebook {
+  width: 50%;
+
+  @include mq("sp") {
+    width: 100%;
+  }
+}
+.facebook__title {
+  a {
+    text-decoration: none;
+    color: $color-text;
+
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background: url(/img/facebook.png) no-repeat center center / contain;
+    }
+  }
+}
+.facebook__content {
+  &::before {
+    background: #345678;
+  }
+}
+.facebook__photo {
+  width: 300px;
+  height: 300px;
+  margin: 40px auto;
+  background: url(/img/fireworks11.jpg) no-repeat center center / cover;
+
+  @include mq("tab") {
+    height: 25vw;
+    width: 25vw;
+  }
+  @include mq("sp") {
+    height: 50vw;
+    width: 50vw;
+  }
+}
+
+// =================================
+// course
+// =================================
+.course {
+}
+.course__inner {
+}
+.course__head {
+}
+.course__wrapper {
+  display: flex;
+  padding-left: 8px;
+  padding-right: 8px;
+
+  @include mq("sp") {
+    flex-wrap: wrap;
+  }
+}
+.course__photo {
+  width: 100%;
+  height: 400px;
+  background: url(/img/cruise.jpg) no-repeat center center / cover;
+}
+.course__content {
+  width: 100%;
+  padding-left: 40px;
+}
+.course__title {
+  font-size: 24px;
+  font-weight: 700;
+    @include mq('sp'){
+        font-size: 16px;
+        margin-top: 16px;
+  }
+}
+.course__text {
+  margin-top: 40px;
+    @include mq('sp'){
+        font-size: 12px;
+        margin-top: 16px;
+  }
+}
+
+// ======================================
+// ticket
+// ======================================
+.ticket {
+}
+.ticket__inner {
+  margin-bottom: 160px;
+}
+.ticket__head {
+}
+.ticket__items {
+  display: flex;
+  flex-wrap: wrap;
+}
+.ticket__item {
+  width: 40%;
+  background: rgba(#000, 0.7);
+  border:$color-text 2px solid;
+  color: $color-text;
+  margin: 40px auto;
+  text-align: center;
+  align-items: center;
+  span{
+    font-size: 40px;
+  }
+
+  @include mq("sp") {
+    width: 90%;
+  }
+}
+
+
+.ticket__name {
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: 40px;
+}
+.ticket__detail{
+  margin-top: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.ticket__text {
+  font-size: 16px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.ticket__button {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+  a {
+    display: inline-block;
+    margin-right: 16px;
+    width: 200px;
+    max-width: 100%;
+    height: 80px;
+    line-height: 80px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    background: $color-main;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgba(#000, 0.16);
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+
+    @include mq("sp") {
+      width: 280px;
+      height: 60px;
+      line-height: 60px;
+      font-size: 16px;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+// ====================================
+// infection
+// ===================================
+.infection {
+  background: $color-text;
+  color: $color-back;
+  overflow: hidden;
+}
+.infection__inner {
+  margin-bottom: 160px;
+    @include mq('sp'){
+        margin-bottom: 80px;
+  }
+}
+
+.infection__head {
+  margin-top: 160px;
+  margin-bottom: 80px;
+    @include mq('sp'){
+        margin-top: 80px;
+        margin-bottom: 0;
+  }
+}
+.infection__items {
+  display: flex;
+  flex-wrap: wrap;
+}
+.infection__item {
+  width: 48%;
+  text-align: center;
+  margin-top: 200px;
+  font-weight: 700;
+  font-size: 24px;
+  position: relative;
+  @include mq('sp'){
+    margin-top: 120px;
+      font-size: 16px;
+}
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: $color-main;
+    top: -130px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+      @include mq('sp'){
+          width: 80px;
+          height: 80px;
+          top: -80px;
+    }
+  }
+}
+.logo__wash {
+  &::before {
+    background: url(/img/washing-hands.png) center center / contain;
+    opacity: 0.6;
+  }
+}
+.logo__mask {
+  &::before {
+    background: url(/img/face-mask.png) center center / contain;
+    opacity: 0.6;
+  }
+}
+.logo__body-temperature {
+  &::before {
+    background: url(/img/thermometer.png) center center / contain;
+    opacity: 0.6;
+  }
+}
+.logo__social-distance {
+  &::before {
+    background: url(/img/social-distancing.png) center center / contain;
+    opacity: 0.6;
+  }
+}
+
+.infection__text {
+  margin: 80px auto 80px;
+  max-width: 480px;
+  width: 90%;
+    @include mq('sp'){
+        margin: 40px auto 40px;
+        font-size: 12px;
+  }
+}
+
+// ====================================
+// plan
+// ======================================
+.plan {
+}
+.plan__inner {
+}
+.plan__1day {
+  overflow: hidden;
+}
+.plan__1day__head {
+}
+.plan__1day__wrapper {
+  display: flex;
+  padding-left: 8px;
+  padding-right: 8px;
+
+  @include mq("sp") {
+    flex-wrap: wrap;
+  }
+}
+.plan__1day__photo {
+  width: 100%;
+  height: 400px;
+  background: url(/img/journey.jpg) no-repeat center center / cover;
+}
+.plan__1day__content {
+  width: 100%;
+  padding-left: 40px;
+}
+.plan__1day__name {
+  font-weight: 700;
+  font-size: 24px;
+    @include mq('sp'){
+        font-size: 16px;
+        margin-top: 16px;
+  }
+}
+.plan__1day__text {
+  margin-top: 24px;
+    @include mq('sp'){
+        font-size: 12px;
+        margin-top: 16px;
+  }
+}
+.plan__2days {
+}
+.plan__2days__head {
+}
+.plan__2days__wrapper1 {
+  display: flex;
+  padding-left: 8px;
+  padding-right: 8px;
+
+  @include mq("sp") {
+    flex-wrap: wrap;
+  }
+}
+.plan__2days__photo1 {
+  width: 100%;
+  height: 400px;
+  background: url(/img/ryokan.jpg) no-repeat center center / cover;
+}
+.plan__2days__content1 {
+  width: 100%;
+  padding-left: 40px;
+}
+.plan__2days__wrapper2 {
+  margin-top: 160px;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: flex;
+
+  @include mq("sp") {
+    flex-wrap: wrap;
+    margin-top: 40px;
+
+  }
+}
+.plan__2days__photo2 {
+  width: 100%;
+  height: 400px;
+  background: url(/img/cottage.jpg) no-repeat center center / cover;
+}
+.plan__2days__content2 {
+  width: 100%;
+  padding-left: 40px;
+}
+.plan__2days__name {
+  font-weight: 700;
+  font-size: 24px;
+    @include mq('sp'){
+        font-size: 16px;
+  }
+  margin-top: 16px;
+}
+.plan__2days__text {
+  margin-top: 24px;
+    @include mq('sp'){
+        font-size: 12px;
+        margin-top: 16px;
+  }
+}
+
+// ================================
+// access
+// ================================
+.access {
+  // overflow: hidden;
+}
+.access__inner {
+  font-size: 20px;
+
+  @include mq("tab") {
+    font-size: 16px;
+  }
+}
+.access__head {
+}
+
+.access__box{
+  background: rgba(#000, 0.7);
+  color:$color-text;
+  border:$color-text 2px solid;
+    @include mq('sp'){
+
+        
+  }
+
+}
+.access__car {
+  color: $color-text;
+  text-align: center;
+
+    @include mq('sp'){
+      font-size: 16px;
+
+        
+  }
+}
+.access__car__title {
+  font-weight: 700;
+  font-size: 24px;
+    @include mq('sp'){
+        font-size: 16px;
+  }
+}
+.car__body {
+  margin-top: 40px;
+  display: flex;
+  width: 100%;
+  height: 400px;
+  justify-content: center;
+
+  @include mq("sp") {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .car__col1 {
+    width: 10%;
+
+    @include mq("sp") {
+      width: inherit;
+      height: 40px;
+      display: flex;
+    }
+
+    .car__col1__row1 {
+      height: 50%;
+      overflow: hidden;
+
+      @include mq("sp") {
+        height: inherit;
+        width: 50%;
+        overflow: visible;
+      }
+
+
+      .car__osaka {
+        margin: 8px;
+        height: 184px;
+        line-height: 184px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include mq("sp") {
+          height: inherit;
+          line-height: 40px;
+          margin: 0 8px;
+        }
+      }
+    }
+    .car__col1__row2 {
+      height: 50%;
+      overflow: hidden;
+
+      @include mq("sp") {
+        height: inherit;
+        width: 50%;
+        overflow: visible;
+      }
+    }
+    .car__hiroshima {
+      margin: 8px;
+      height: 184px;
+      line-height: 184px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include mq("sp") {
+        height: inherit;
+        line-height: 40px;
+        margin: 0 8px;
+      }
+    }
+  }
+  .car__col2 {
+    width: 30%;
+
+    @include mq("sp") {
+      width: 100%;
+      display: flex;
+      margin-top: 4px;
+    }
+
+    .car__col2__row1 {
+      height: 50%;
+      overflow: hidden;
+
+      @include mq("sp") {
+        overflow: visible;
+        height: 80px;
+        width: 50%;
+      }
+
+      .car__osaka-kasaoka {
+        border-bottom: solid 4px $color-text;
+        height: 40px;
+        margin: 60px 0 100px;
+
+        @include mq("sp") {
+          border-bottom: none;
+          border-right: solid 4px $color-text;
+          height: 80px;
+          line-height: 80px;
+          width: 50%;
+          margin: 0;
+          text-align: right;
+          padding-right: 4px;
+      font-size: 12px;
+
+        }
+      }
+    }
+    .car__col2__row2 {
+      height: 50%;
+      overflow: hidden;
+
+      @include mq("sp") {
+        overflow: visible;
+        height: 80px;
+        width: 50%;
+      }
+
+      .car__hiroshima-kasaoka {
+        border-bottom: solid 4px $color-text;
+        height: 40px;
+        margin: 60px 0 100px;
+        br{display: none;}
+
+        @include mq("sp") {
+          border-bottom: none;
+          border-right: solid 4px $color-text;
+          height: 80px;
+          line-height: 20px;
+          width: 50%;
+          margin: 0;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          padding-right: 4px;
+          font-size: 12px;
+          br{display: block;}
+
+        }
+      }
+    }
+  }
+  .car__col3 {
+    width: 10%;
+
+    @include mq("sp") {
+      width: 100%;
+      margin-top: 4px;
+    }
+    .car__kasaoka {
+      margin: 8px;
+      height: 384px;
+      line-height: 384px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include mq("sp") {
+        margin: 0 8px;
+        height: 40px;
+        line-height: 40px;
+      }
+    }
+  }
+  .car__col4 {
+    width: 30%;
+
+    @include mq("sp") {
+      width: 50%;
+      margin-top: 4px;
+    }
+    .car__kasaoka-port {
+      border-bottom: solid 4px $color-text;
+      height: 40px;
+      margin: 160px 0 200px;
+      @include mq("sp") {
+        border-bottom: none;
+        border-right: solid 4px $color-text;
+        height: 80px;
+        margin: 0;
+        font-size: 12px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 4px;
+      }
+    }
+  }
+  .car__col5 {
+    width: 10%;
+    position: relative;
+
+    @include mq("sp") {
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .car__port {
+      margin: 8px;
+      height: 384px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include mq("sp") {
+        margin: 0 8px;
+        height: 60px;
+      }
+    }
+    .car__port__parking {
+      color: $color-text;
+      position: absolute;
+      width: 160px;
+      top: 400px;
+      right: 0;
+      text-align: end;
+
+      @include mq("sp") {
+        top: 60px;
+        right: 8px;
+        width: 100%;
+        font-size: 12px;
+        br{display: none;}
+      }
+    }
+  }
+}
+
+.access__train {
+  color: $color-text;
+  text-align: center;
+  margin-top: 160px;
+
+    @include mq('sp'){
+        font-size: 16px;
+  }
+}
+.access__train__title {
+  font-weight: 700;
+  font-size: 24px;
+    @include mq('sp'){
+        font-size: 16px;
+  }
+}
+.train__body {
+  margin-top: 40px;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+
+  @include mq("sp") {
+    display: block;
+    height: auto;
+  }
+}
+
+.train__col1 {
+  width: 10%;
+
+  @include mq("sp") {
+    width: inherit;
+    height: 40px;
+    display: flex;
+  }
+  .train__tokyo {
+    margin: 8px;
+    height: 384px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include mq("sp") {
+      height: inherit;
+      width: inherit;
+      br {
+        display: none;
+      }
+      margin: 0 8px;
+    }
+  }
+}
+
+.train__col2 {
+  width: 30%;
+  position: relative;
+
+  @include mq("sp") {
+    width: inherit;
+    height: 160px;
+    display: flex;
+    margin-top: 4px;
+  }
+
+  .train__col2__row1 {
+    @include mq("sp") {
+      width: 25%;
+      height: 160px;
+
+    }
+
+    .train__tokyo-okayama {
+      border-bottom: solid 4px $color-text;
+      height: 40px;
+      margin: 20px 0 40px;
+      br{display: none;}
+
+      @include mq("sp") {
+        margin: 0;
+        height: inherit;
+        width: 75%;
+        border-bottom: none;
+        border-right: 4px solid $color-text;
+        font-size: 12px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 4px;
+        br{display: block;}
+      }
+    }
+  }
+  .train__col2__row2 {
+    @include mq("sp") {
+      width: 50%;
+      display: flex;
+      flex-wrap: wrap;
+      height: 160px;
+    }
+
+    .train__col2__row2__1 {
+      float: left;
+      width: 50%;
+      height: 200px;
+
+      @include mq("sp") {
+        width: 100%;
+        height: 80px;
+        padding-top: 40px;
+      }
+
+      .train__osaka {
+        width: 50%;
+        float: right;
+        margin: 8px;
+        height: 184px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include mq("sp") {
+          width: 100%;
+          height: 40px;
+          margin: 0;
+          br {
+            display: none;
+          }
+        }
+      }
+    }
+    .train__col2__row2__2 {
+      float: left;
+      width: 50%;
+      height: 100px;
+
+      @include mq("sp") {
+        float: none;
+        width: 50%;
+        height: 80px;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .train__osaka-okayama {
+        border-bottom: solid 4px $color-text;
+        height: 40px;
+        margin: 20px 0 40px;
+
+
+        @include mq("sp") {
+          border-bottom: none;
+          border-left: solid 4px $color-text;
+          height: 80px;
+          width: 75%;
+          margin: 0;
+          font-size: 12px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          padding-left: 4px;
+        }
+      }
+    }
+    .train__col2__row2__3 {
+      float: left;
+      width: 50%;
+      height: 100%;
+
+      @include mq("sp") {
+        float: none;
+        width: 50%;
+        height: 80px;
+      }
+
+      .train__osaka-fukuyama {
+        border-bottom: solid 4px $color-text;
+        height: 40px;
+        margin: 20px 0 40px;
+        br{display: none;}
+
+        @include mq("sp") {
+          border-bottom: none;
+          border-right: solid 4px $color-text;
+          height: 80px;
+          width: 75%;
+          margin: 0;
+          font-size: 12px;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          padding-right: 4px;
+          br{display: block;}
+        }
+      }
+    }
+  }
+  .train__col2__row3 {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+
+    @include mq("sp") {
+      width: 25%;
+      height: 160px;
+      position: static;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .train__tokyo-fukuyama {
+      border-bottom: solid 4px $color-text;
+      height: 40px;
+      margin: 20px 0 40px;
+      br{display: none;}
+
+      @include mq("sp") {
+        border-bottom: none;
+        border-left: solid 4px $color-text;
+        height: inherit;
+        width: 75%;
+        margin: 0;
+        font-size: 12px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 4px;
+        br{display: block;}
+      }
+    }
+  }
+}
+
+.train__col3 {
+  width: 10%;
+
+  @include mq("sp") {
+    width: 100%;
+    margin-top: 4px;
+    display: flex;
+  }
+  .train__col3__row1 {
+    @include mq("sp") {
+      width: 50%;
+    }
+
+    .train__okayama {
+      margin: 8px;
+      height: 184px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include mq("sp") {
+        margin: 0 8px;
+        height: 40px;
+        br {
+          display: none;
+        }
+      }
+    }
+  }
+  .train__col3__row2 {
+    overflow: hidden;
+
+    @include mq("sp") {
+      width: 50%;
+    }
+
+    .train__fukuyama {
+      margin: 8px;
+      height: 184px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include mq("sp") {
+        margin: 0 8px;
+        height: 40px;
+        br {
+          display: none;
+        }
+      }
+    }
+  }
+}
+.train__col4 {
+  width: 10%;
+
+  @include mq("sp") {
+    width: 100%;
+    display: flex;
+    margin-top: 4px;
+  }
+  .train__col4__row1 {
+    @include mq("sp") {
+      width: 50%;
+      height: 80px;
+    }
+    .train__okayama-kasaoka {
+      border-bottom: solid 4px $color-text;
+      height: 40px;
+      margin: 60px 0 100px;
+
+      @include mq("sp") {
+        border-bottom: none;
+        border-right: 4px solid $color-text;
+        width: 50%;
+        height: inherit;
+        margin: 0;
+        font-size: 12px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 4px;
+      }
+    }
+  }
+  .train__col4__row2 {
+    overflow: hidden;
+    @include mq("sp") {
+      width: 50%;
+      height: 80px;
+    }
+    .train__fukuyama-kasaoka {
+      border-bottom: solid 4px $color-text;
+      height: 40px;
+      margin: 60px 0 100px;
+
+      @include mq("sp") {
+        border-bottom: none;
+        border-right: 4px solid $color-text;
+        width: 50%;
+        height: inherit;
+        margin: 0;
+        font-size: 12px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 4px;
+      }
+    }
+  }
+}
+.train__col5 {
+  width: 10%;
+  position: relative;
+
+  @include mq("sp") {
+    width: 100%;
+    margin-top: 4px;
+    display: flex;
+  }
+
+  .train__kasaoka {
+    margin: 8px;
+    height: 384px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include mq("sp") {
+      margin: 0 8px;
+      height: 40px;
+      width: 100%;
+      br {
+        display: none;
+      }
+    }
+  }
+
+}
+.train__col6 {
+  width: 10%;
+
+  @include mq("sp") {
+    width: 100%;
+    height: 80px;
+    margin-top: 4px;
+    display: flex;
+  }
+  .train__col6__row1 {
+    @include mq("sp") {
+      width: 50%;
+      height: 80px;
+    }
+    .train__kasaoka-fusekoshi {
+      border-bottom: solid 4px $color-text;
+      height: 40px;
+      margin: 60px 0 100px;
+      br{display: none;}
+
+      @include mq("sp") {
+        border-bottom: none;
+        border-right: 4px solid $color-text;
+        width: 50%;
+        height: inherit;
+        margin: 0;
+        font-size: 12px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 4px;
+        br{display: block;}
+      }
+    }
+  }
+  .train__col6__row2 {
+    overflow: hidden;
+
+    @include mq("sp") {
+      width: 50%;
+      height: 80px;
+    }
+    .train__kasaoka-sumiyoshi {
+      border-bottom: solid 4px $color-text;
+      height: 40px;
+      margin: 60px 0 100px;
+      br{display: none;}
+
+      @include mq("sp") {
+        border-bottom: none;
+        border-right: 4px solid $color-text;
+        width: 50%;
+        height: inherit;
+        margin: 0;
+        font-size: 12px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 4px;
+        br{display: block;}
+      }
+    }
+  }
+}
+.train__col7 {
+  width: 10%;
+
+  @include mq("sp") {
+    width: 100%;
+    margin-top: 4px;
+    display: flex;
+  }
+  .train__col7__row1 {
+    @include mq("sp") {
+      width: 50%;
+    }
+
+    .train__fusekoshi {
+      margin: 8px;
+      height: 184px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include mq("sp") {
+        margin: 0 8px;
+        height: 40px;
+      }
+    }
+  }
+  .train__col7__row2 {
+    overflow: hidden;
+
+    @include mq("sp") {
+      width: 50%;
+    }
+    .train__sumiyoshi {
+      margin: 8px;
+      height: 184px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include mq("sp") {
+        margin: 0 8px;
+        height: 40px;
+      }
+    }
+  }
+}
+.access__ship {
+  color: $color-text;
+  text-align: center;
+  margin-top: 160px;
+
+    @include mq('sp'){
+        font-size: 16px;
+  }
+}
+
+.access__ship__title {
+  font-weight: 700;
+  font-size: 24px;
+    @include mq('sp'){
+        font-size: 16px;
+  }
+}
+.ship__body {
+  margin-top: 40px;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+
+    @include mq('sp'){
+      display: block;
+      width: 100%;
+      height: auto;
+        
+  }
+}
+
+.ship__col1 {
+  width: 20%;
+
+    @include mq('sp'){
+      width: inherit;
+      height: 40px;
+      display: flex;
+  }
+
+  .ship__col1__row1 {
+
+      @include mq('sp'){
+        height: inherit;
+        width: 50%;
+        overflow: visible;
+    }
+    .ship__fusekoshi {
+      margin: 8px;
+      height: 184px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+        @include mq('sp'){
+          height: inherit;
+          line-height: 40px;
+          margin: 0 8px;
+      }
+    }
+  }
+  .ship__col1__row2 {
+    overflow: hidden;
+
+    @include mq('sp'){
+      height: inherit;
+      width: 50%;
+      overflow: visible;
+  }
+
+    .ship__sumiyoshi {
+      margin: 8px;
+      height: 184px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+        @include mq('sp'){
+          height: inherit;
+          line-height: 40px;
+          margin: 0 8px;
+      }
+
+    }
+  }
+}
+.ship__col2 {
+  width: 50%;
+
+    @include mq('sp'){
+      width: 100%;
+      height: 160px;
+      display: flex;
+      margin-top: 4px;
+  }
+
+  .ship__col2__row1 {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+
+      @include mq('sp'){
+        height: inherit;
+        width: 50%;
+        display: flex;
+        overflow: visible;
+
+    }
+
+    a {
+      position: absolute;
+      right: 24px;
+      bottom: 48px;
+      color: $color-main;
+
+        @include mq('sp'){
+            top: 244px;
+            right: 0;
+            font-size: 12px;
+      }
+    }
+
+    .ship__col2__row1-1 {
+        @include mq('sp'){
+          width: 50%;
+            
+      }
+      .ship__fusekoshi__forward {
+        border-bottom: solid 4px $color-text;
+        height: 60px;
+        margin: 20px 0 20px;
+        br{display: none;}
+
+          @include mq('sp'){
+              border-bottom: none;
+              border-right: 4px solid $color-text;
+              height: 160px;
+              width: 90%;
+              margin: 0;
+              font-size: 12px;
+              text-align: right;
+              padding-right: 4px;
+              padding-top: 40px;
+              
+              br{display:block;}
+              span{display: none;}
+        }
+
+
+      }
+    }
+    .ship__col2__row1-2 {
+        @include mq('sp'){
+            width: 50%;
+      }
+      .ship__fusekoshi__back {
+        border-bottom: solid 4px $color-text;
+        height: 0;
+        
+          @include mq('sp'){
+              border-bottom:none;
+              border-right: 4px solid $color-text;
+              height: 160px;
+              width: 10%;
+              margin: 0;
+        }
+      }
+    }
+  }
+  .ship__col2__row2 {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+
+      @include mq('sp'){
+        height: inherit;
+        width: 50%;
+        display: flex;
+        overflow: visible;
+    }
+
+
+    a {
+      position: absolute;
+      right: 24px;
+      bottom: 32px;
+      color: $color-main;
+
+        @include mq('sp'){
+          top: 244px;
+          right: 0;
+          font-size: 12px;
+      }
+    }
+
+    .ship__col2__row2-1 {
+
+        @include mq('sp'){
+          width: 50%;
+      }
+      .ship__sumiyoshi__forward {
+        border-bottom: solid 4px $color-text;
+        height: 60px;
+        margin: 20px 0 20px;
+        br{
+          display: none;
+        }
+
+          @include mq('sp'){
+            border-bottom: none;
+            border-right: 4px solid $color-text;
+            height: 160px;
+            width: 90%;
+            margin: 0;
+            font-size: 12px;
+            text-align: right;
+            padding-right: 4px;
+            padding-top: 40px;
+            br{
+              display: block;
+            }
+        }
+      }
+    }
+    .ship__col2__row2-2 {
+
+        @include mq('sp'){
+          width: 50%;
+      }
+      .ship__sumiyoshi__back {
+        font-weight: 700;
+
+        br{display: none;}
+
+          @include mq('sp'){
+              font-size: 12px;
+              height: 160px;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              br{display: block;}
+        }
+      }
+    }
+  }
+}
+
+.ship__col3 {
+  width: 20%;
+  
+    @include mq('sp'){
+        width: 100%;
+        height: 80px;
+        margin-top: 4px;
+  }
+  .ship__kitakijima {
+    margin: 8px;
+    height: 384px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+      @include mq('sp'){
+          margin: 0 8px;
+          height: inherit;
+
+    }
+  }
+}
+// ==============================
+// map
+// ==============================
+.map {
+}
+.map__inner {
+}
+
+.map__head {
+}
+iframe {
+}
+
+// ==================================
+// qa
+// ==================================
+.qa {
+}
+.qa__inner {
+}
+.qa__head {
+}
+.qa__items {
+  width: 900px;
+  max-width: 100%;
+  margin: 80px auto 0;
+}
+.qa__item {
+  &:nth-child(n + 2) {
+    margin-top: 24px;
+  }
+}
+.qa-box {
+  border: 1px solid $color-text;
+}
+.qa-box__q {
+  color: $color-text;
+  background: rgba(#000, 0.7);
+  padding: 12px 56px;
+  font-weight: 700;
+  position: relative;
+
+  &::before {
+    content: "Q";
+    position: absolute;
+    top: 12px;
+    left: 20px;
+  }
+
+    @include mq('sp'){
+        font-size: 12px;
+  }
+}
+.qa-box__icon {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  &.is-open {
+    .qa-box__bar2 {
+      transform: rotate(90deg);
+    }
+  }
+}
+.qa-box__bar1 {
+  width: 14px;
+  height: 2px;
+  background: #fff;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+}
+.qa-box__bar2 {
+  width: 2px;
+  height: 14px;
+  background: #fff;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+
+  transition: all 0.3s ease 0s;
+}
+.qa-box__a {
+  background: rgba(#222, 0.7);
+  font-weight: 700;
+  color: $color-text;
+  line-height: (24/16);
+  padding: 16px 30px 16px 20px;
+  display: none;
+
+}
+.qa-box__content {
+  position: relative;
+  padding-left: 35px;
+    @include mq('sp'){
+        font-size: 12px;
+  }
+
+  &::before {
+    content: "A";
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+// ===============================
+// news
+// ===============================
+
+.news {
+
+}
+.news__inner {
+}
+.news__head {
+}
+.news__items {
+  margin: 80px auto 0;
+  width: 800px;
+  max-width: 100%;
+  background: rgba(#000, 0.7);
+
+  @include mq("sp") {
+    margin-top: 40px;
+  }
+}
+.news__item {
+  display: flex;
+  padding: 20px 12px;
+
+
+  &:not(:first-child) {
+    border-top: 1px solid $color-text;
+  }
+  @include mq("sp") {
+    display: block;
+  }
+
+ 
+}
+.news__meta {
+  display: flex;
+  width: 185px;
+}
+.news__date {
+  font-size: 16px;
+  width: 105px;
+  padding-top: 3px;
+  font-family: $font-en;
+    @include mq('sp'){
+        font-size: 12px;
+  }
+}
+.news__label {
+  a {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    width: 80px;
+    height: 32px;
+    line-height: 32px;
+    // heightとline-heightを同じにして上下中央揃え
+    color: $color-text;
+    background: $color-back;
+    border-radius: 4px;
+    text-decoration: none;
+    // padding: 8px;
+    transition: all 0.3s ease 0s;
+      @include mq('sp'){
+          font-size: 12px;
+          width: 64px;
+          height: 24px;
+          line-height: 24px;
+    }
+
+    &.is-yellow {
+      background: $color-main;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+.news__title {
+  width: calc(100%-185px);
+  padding-top: 4px;
+  padding-left: 20px;
+  a {
+    color: $color-text;
+    text-decoration: none;
+    line-height: (20 /16);
+  }
+  @include mq("sp") {
+    width: 100%;
+    padding: 0;
+    margin-top: 6px;
+    font-size: 12px;
+  }
+}
+
+
+// ==================================
+// conversion
+// ==================================
+.conversion {
+  padding: 80px 0 80px;
+    @include mq('sp'){
+        
+  }
+
+}
+.conversion__inner {
+}
+.conversion__text {
+  font-size: 24px;
+  color: $color-main;
+  text-align: center;
+  font-weight: 700;
+    @include mq('sp'){
+        font-size: 16px;
+  }
+}
+.conversion__button {
+  margin-top: 40px;
+  margin-bottom: 80px;
+  text-align: center;
+  width: 80vw;
+  margin: 40px auto 80px;
+  a {
+  }
+    @include mq('sp'){
+        font-size: 16px;
+  }
+}
+// ==================================
+//  footer
+// ==================================
+.footer {
+  background: linear-gradient(to bottom, rgba(0,0,0 , 0.3), rgba(0,0,0, 0.9));
+  padding: 60px 0 24px;
+  color: #fff;
+
+  @include mq("sp") {
+    padding-top: 30px;
+    padding-bottom: 14px;
+  }
+}
+.footer__inner {
+  width: 90%;
+}
+.footer__content {
+  display: flex;
+  @include mq("sp") {
+    display: block;
+  }
+}
+.footer__left {
+  width: 70%;
+  @include mq("sp") {
+    width: 100%;
+  }
+}
+
+.footer__logo {
+  padding-left: 80px;
+  position: relative;
+    @include mq('sp'){
+        padding-left: 56px;
+  }
+
+  a {
+    color: $color-text;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+  @include mq('sp'){
+      font-size: 16px;
+}
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 60px;
+      background: url(/img/fireworks-logo2.png) center center / cover;
+        @include mq('sp'){
+            width: 40px;
+            height: 40px;
+      }
+      
+    }
+  }
+}
+
+.footer__address,
+.footer__tel {
+  font-size: 12px;
+}
+
+.footer__address {
+  margin-top: 40px;
+
+  @include mq("sp") {
+    margin-top: 16px;
+  }
+}
+.footer__tel {
+}
+
+.footer__right {
+  width: 30%;
+  @include mq("sp") {
+    width: 100%;
+    margin-top: 24px;
+  }
+}
+.footer__sns {
+  display: flex;
+  justify-content: flex-end;
+  @include mq("sp") {
+    justify-content: space-around;
+  }
+  li {
+    &:not(:first-child) {
+      margin-left: 16px;
+    }
+    a {
+      text-decoration: none;
+      img {
+        width: 24px;
+      }
+    }
+  }
+}
+.footer__copy {
+  display: block;
+  width: 100%;
+  margin-top: 40px;
+  font-size: 12px;
+  text-align: center;
+  font-family: $font-en;
+
+  @include mq("sp") {
+    margin-top: 24px;
+  }
+}
