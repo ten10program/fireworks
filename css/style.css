@@ -508,7 +508,7 @@ canvas {
           transform: translateY(-50%);
   width: 24px;
   height: 24px;
-  background: url(/img/instagram.png) no-repeat center center/contain;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/instagram.png?raw=true) no-repeat center center/contain;
 }
 
 .instagram__photos {
@@ -578,7 +578,7 @@ canvas {
           transform: translateY(-50%);
   width: 24px;
   height: 24px;
-  background: url(/img/tik-tok.png) no-repeat center center/contain;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/tik-tok.png?raw=true) no-repeat center center/contain;
 }
 
 .tiktok__photos {
@@ -674,7 +674,7 @@ canvas {
           transform: translateY(-50%);
   width: 24px;
   height: 24px;
-  background: url(/img/twitter.png) no-repeat center center/contain;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/twitter.png?raw=true) no-repeat center center/contain;
 }
 
 .twitter__content::before {
@@ -969,7 +969,7 @@ canvas {
 }
 
 .logo__wash::before {
-  background: url(/img/washing-hands.png) center center/contain;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/washing-hands.png?raw=true) center center/contain;
   opacity: 0.6;
 }
 
@@ -979,12 +979,12 @@ canvas {
 }
 
 .logo__body-temperature::before {
-  background: url(/img/thermometer.png) center center/contain;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/thermometer.png?raw=true) center center/contain;
   opacity: 0.6;
 }
 
 .logo__social-distance::before {
-  background: url(/img/social-distancing.png) center center/contain;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/social-distancing.png?raw=true) center center/contain;
   opacity: 0.6;
 }
 
@@ -1023,7 +1023,7 @@ canvas {
 .plan__1day__photo {
   width: 100%;
   height: 400px;
-  background: url(/img/journey.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/journey.jpg?raw=true) no-repeat center center/cover;
 }
 
 .plan__1day__content {
@@ -1072,7 +1072,7 @@ canvas {
 .plan__2days__photo1 {
   width: 100%;
   height: 400px;
-  background: url(/img/ryokan.jpg) no-repeat center center/cover;
+  background: url(https://github.com/ten10program/fireworks/blob/main/img/ryokan.jpg?raw=true) no-repeat center center/cover;
 }
 
 .plan__2days__content1 {
